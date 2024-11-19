@@ -17,9 +17,26 @@ export class BasicPageComponent {
       {price: rtx.price, name: rtx.name, inStorage: rtx.inStorage});
   }
 
-  isValidField( field: string): boolean | null{
-    return this.myForm.controls[field].errors
-    && this.myForm.controls[field].touched;
+  isValidField(field: string) : boolean | null {
+    return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
+  }
+
+  getFieldError(field : string) : string | null{
+
+    if (!this.myForm.controls[field].errors) return null;
+
+    const errors = this.myForm.controls[field].errors || {};
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case "required":
+          return "El campo es requerido";
+        case "minlength":
+          return "El campo debe de tener 3 letras";
+        case "min":
+          return "El campo debe de ser mayor o igual a 0";
+      }
+    }
+    return null;
   }
 
   public myForm: FormGroup = new FormGroup(
