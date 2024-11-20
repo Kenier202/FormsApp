@@ -76,7 +76,7 @@
   <div class="row">
     <div class="col">
       <button
-        (click)="onsave()"
+        (ngsubmit)="onsave()"
         class="btn btn-primary float-end"
         type="submit"
       >
@@ -91,7 +91,7 @@
 <br />
 
 <h5>Persona</h5>
-<pre>{{ "object" | json }}</pre>
+<pre>{{ person | json }}</pre>
 <br />
 
 <h5>Valid</h5>

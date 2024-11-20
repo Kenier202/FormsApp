@@ -9,6 +9,11 @@ export class SwitchesPageComponent implements OnInit{
 
   public myform!: FormGroup;
 
+  public person = {
+    gender: 'M',
+    wantNotifications: false,
+  }
+
   constructor (private fb: FormBuilder){}
 
   ngOnInit(): void {
@@ -18,6 +23,8 @@ export class SwitchesPageComponent implements OnInit{
       termsAndConditions : [false,Validators.requiredTrue],
 
     });
+
+    this.myform.reset(this.person);
   }
 
   isValidField(field : string) : boolean | null {
@@ -31,5 +38,11 @@ export class SwitchesPageComponent implements OnInit{
       this.myform.markAllAsTouched();
       return;
     }
+
+    const {termsAndConditions, ...person} = this.myform.value;
+
+    this.person = person;
+    console.log(this.myform.value);
+    console.log(this.person);
   }
 }
