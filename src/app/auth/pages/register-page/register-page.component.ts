@@ -24,6 +24,10 @@ export class RegisterPageComponent implements OnInit {
       username: ['', [Validators.required, this.validatorService.cantBeStrider]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
+    },{
+      Validators: [
+        this.validatorService.isFieldOneEqualFieldTwo('password', 'confirmPassword')
+      ]
     });
   }
 
