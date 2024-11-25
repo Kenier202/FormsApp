@@ -102,10 +102,10 @@
 <h2>Form errors: {{ miForm.errors | json }}</h2>
 
 <h5>Nombre</h5>
-<pre>{{ miForm.value.name | json }}</pre>
+<pre>{{ miForm.controls["name"].errors | json }}</pre>
 
 <h5>Email</h5>
-<pre>{{ miForm.value.email | json }}</pre>
+<pre>{{ miForm.controls["email"].errors | json }}</pre>
 
 <h5>Username</h5>
 <pre>{{ miForm.controls["username"].errors | json }}</pre>
